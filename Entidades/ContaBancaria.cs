@@ -9,7 +9,7 @@ namespace appContaBancaria.Entidades
 {
     class ContaBancaria
     {
-        private TipoConta TipoConta { get; set; }
+       private TipoConta TipoConta { get; set; }
         
         private string Nome { get; set; }
 
@@ -17,10 +17,12 @@ namespace appContaBancaria.Entidades
 
         private double Credito { get; set; }
 
-
-
-
-
-
+        public ContaBancaria(TipoConta tipoConta, string nome, double saldo, double credito)
+        {
+            TipoConta = tipoConta;
+            Nome = nome;
+            Saldo = saldo;
+            Credito = credito;
+        }
     }
 }

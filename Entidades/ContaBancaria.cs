@@ -23,7 +23,7 @@ namespace appContaBancaria.Entidades
             LimiteUtilizado = 0;
         }
 
-        public void ImprimiSaldo()
+        private void ImprimiSaldo()
         {
             Console.WriteLine("Saldo atual da conta de {0} é {1} - Limite Disponivel: {2}", Nome,
                                    LimiteUtilizado == 0.00 ? Saldo.ToString("C") : ((-1) * LimiteUtilizado).ToString("C"), (Limite - LimiteUtilizado).ToString("C"));
@@ -93,5 +93,28 @@ namespace appContaBancaria.Entidades
 
             ImprimiSaldo();
         }
+
+        public void Transferir(double valorTransferencia, ContaBancaria contaDestino)
+        {
+            if(Sacar(valorTransferencia))
+            {
+                contaDestino.Deposito(valorTransferencia);
+            }
+        }
+
+        public override string ToString()
+        {
+            string infoConta = "";
+
+            infoConta += "TipoConta: " + TipoConta + " | ";
+            infoConta += "Nome: " + Nome + " | ";
+            infoConta += "Saldo: " + (LimiteUtilizado == 0.00 ? Saldo.ToString("C") : ((-1) * LimiteUtilizado).ToString("C")) + " | ";
+            infoConta += "Limite: " + Limite.ToString("C");
+
+            return infoConta;
+        }
     }
+
+
+    
 }

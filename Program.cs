@@ -10,11 +10,13 @@ namespace appContaBancaria
         {
             Console.WriteLine("Hello World!");
 
-            ContaBancaria minhaConta = new ContaBancaria(TipoConta.PessoaFisica, "Diego", 600, 100);
+            ContaBancaria minhaConta = new ContaBancaria(TipoConta.PessoaFisica, "Diego", 100, 100);
 
 
-            minhaConta.Sacar(600.00);
-            minhaConta.Sacar(1.5);
+            minhaConta.Sacar(200.00);
+
+            minhaConta.Deposito(105);
+
         }
     }
 }

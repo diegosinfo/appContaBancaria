@@ -23,6 +23,12 @@ namespace appContaBancaria.Entidades
             LimiteUtilizado = 0;
         }
 
+        public void ImprimiSaldo()
+        {
+            Console.WriteLine("Saldo atual da conta de {0} é {1} - Limite Disponivel: {2}", Nome,
+                                   LimiteUtilizado == 0.00 ? Saldo.ToString("C") : ((-1) * LimiteUtilizado).ToString("C"), (Limite - LimiteUtilizado).ToString("C"));
+        }
+
         public bool Sacar(double valorSaque)
         {
             bool operacaoRealizada = false;
@@ -56,8 +62,7 @@ namespace appContaBancaria.Entidades
 
             if (operacaoRealizada)
             {
-                Console.WriteLine("Saldo atual da conta de {0} é {1} - Limite Disponivel: {2}", Nome, 
-                                LimiteUtilizado == 0.00? Saldo.ToString("C") : ((-1) * LimiteUtilizado).ToString("C"), (Limite - LimiteUtilizado).ToString("C"));
+                ImprimiSaldo();
             }
             else
             {
@@ -67,5 +72,26 @@ namespace appContaBancaria.Entidades
             return operacaoRealizada;
         }
 
+
+        public void Deposito(double valorDepositado)
+        {
+            if(LimiteUtilizado != 0.00)
+            {
+                if(valorDepositado >= LimiteUtilizado)
+                {
+                    valorDepositado -= LimiteUtilizado;
+                    LimiteUtilizado = 0.00;
+                }
+                else
+                {
+                    LimiteUtilizado -= valorDepositado;
+                    valorDepositado = 0.00;
+                }
+            }
+
+            Saldo += valorDepositado;
+
+            ImprimiSaldo();
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace appContaBancaria
                         break;
 
                     case "5":
-                        //Deposito();
+                        Deposito();
                         break;
 
                     case "C":
@@ -51,6 +51,17 @@ namespace appContaBancaria
             }
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
+        }
+
+        private static void Deposito()
+        {
+            Console.Write("Digite o número da conta: ");
+            int indiceConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser depositado: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            listContas[indiceConta].Deposito(valor);
         }
 
         private static void Saque()

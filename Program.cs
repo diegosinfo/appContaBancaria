@@ -19,7 +19,7 @@ namespace appContaBancaria
                 switch (opcaoUsuario)
                 {
                     case "1":
-                        // ListarContas();
+                        ListarContas();
                         break;
 
                     case "2":
@@ -52,6 +52,22 @@ namespace appContaBancaria
             }
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
+        }
+
+        private static void ListarContas()
+        {
+            if(listContas.Count == 0)
+            {
+                Console.WriteLine("Nenhuma conta cadastrada");
+                return;
+            }
+
+            for(int i = 0; i < listContas.Count; i++)
+            {
+                ContaBancaria conta = listContas[i];
+                Console.WriteLine("#{0} - {1}", i, conta);
+            }
+
         }
 
         private static void InserirConta()

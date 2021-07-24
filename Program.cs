@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using appContaBancaria.Entidades;
 using appContaBancaria.Enum;
 
@@ -31,7 +30,7 @@ namespace appContaBancaria
                         break;
 
                     case "4":
-                        //Saque();
+                        Saque();
                         break;
 
                     case "5":
@@ -52,6 +51,18 @@ namespace appContaBancaria
             }
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
+        }
+
+        private static void Saque()
+        {
+            Console.Write("Digite o número da conta: ");
+            int indiceConta = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser sacado: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            listContas[indiceConta].Sacar(valor);
+
         }
 
         private static void ListarContas()
@@ -82,10 +93,10 @@ namespace appContaBancaria
             string entradaNome = Console.ReadLine();
 
             Console.Write("Digite o saldo inicial: ");
-            double entradaSaldo = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            double entradaSaldo = double.Parse(Console.ReadLine());
 
             Console.Write("Digite o limite: ");
-            double entradaLimite = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            double entradaLimite = double.Parse(Console.ReadLine());
 
             ContaBancaria novaConta = new ContaBancaria((TipoConta)entradaTipoConta, entradaNome, entradaSaldo, entradaLimite);
 

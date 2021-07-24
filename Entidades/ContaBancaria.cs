@@ -102,6 +102,7 @@ namespace appContaBancaria.Entidades
             }
         }
 
+
         public override string ToString()
         {
             string infoConta = "";

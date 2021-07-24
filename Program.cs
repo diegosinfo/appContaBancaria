@@ -26,7 +26,7 @@ namespace appContaBancaria
                         break;
 
                     case "3":
-                        //Transferencia();
+                        Transferencia();
                         break;
 
                     case "4":
@@ -51,6 +51,20 @@ namespace appContaBancaria
             }
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
+        }
+
+        private static void Transferencia()
+        { 
+            Console.Write("Digite a conta de origem: ");
+            int indiceContaOrigem = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite a conta de destino: ");
+            int indiceContaDestino = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o valor a ser transferido: ");
+            double valor = double.Parse(Console.ReadLine());
+
+            listContas[indiceContaOrigem].Transferir(valor, listContas[indiceContaDestino]);
         }
 
         private static void Deposito()
